@@ -28,6 +28,24 @@ a:hover{ color: #7ff0ff; }
     border-bottom: 1px solid var(--border);
 }
 
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    height: 80px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 80px;
+    width: auto;
+}
+
 .navbar .nav-link{
     color: var(--muted);
     border-radius: 12px;

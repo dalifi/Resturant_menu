@@ -1,0 +1,76 @@
+@model dynamic
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Admin Dashboard</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card card-ui text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5>
+                    <h2 class="text-primary">@Model.TotalBookings</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-ui text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Menu Items</h5>
+                    <h2 class="text-success">@Model.TotalMenuItems</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-ui text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Categories</h5>
+                    <h2 class="text-warning">@Model.TotalCategories</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-ui text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Admins</h5>
+                    <h2 class="text-danger">@Model.TotalAdmins</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-ui">
+                <div class="card-body">
+                    <h5 class="card-title">Management</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent">
+                            <a href="@Url.Action("Categories", "AdminDashboard")" class="btn btn-outline-primary w-100">Manage Categories</a>
+                        </li>
+                        <li class="list-group-item bg-transparent">
+                            <a href="@Url.Action("MenuItems", "AdminDashboard")" class="btn btn-outline-success w-100">Manage Menu Items</a>
+                        </li>
+                        <li class="list-group-item bg-transparent">
+                            <a href="@Url.Action("Admins", "AdminDashboard")" class="btn btn-outline-danger w-100">Manage Admins</a>
+                        </li>
+                        <li class="list-group-item bg-transparent">
+                            <a href="@Url.Action("Index", "AdminBookings")" class="btn btn-outline-info w-100">View Bookings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-ui">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Actions</h5>
+                    <p>Welcome to the admin panel. Use the links to manage your restaurant data.</p>
+                    <a href="@Url.Action("Logout", "AdminAccount")" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

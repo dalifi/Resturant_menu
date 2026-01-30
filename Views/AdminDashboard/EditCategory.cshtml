@@ -1,0 +1,27 @@
+@model Category
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Edit Category</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card card-ui">
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input name="Name" class="form-control input-ui" value="@Model.Name" required />
+                        </div>
+                        <button class="btn btn-primary w-100">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Categories", "AdminDashboard")" class="btn btn-secondary mt-3">Back to Categories</a>
+</div>

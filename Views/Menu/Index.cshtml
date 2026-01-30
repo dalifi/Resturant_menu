@@ -3,22 +3,33 @@
     ViewData["Title"] = "Menu";
 }
 
-<div class="menu-grid">
-@foreach (var item in Model)
-{
-    <a class="menu-card text-decoration-none text-dark"
-       asp-controller="Menu"
-       asp-action="Details"
-       asp-route-id="@item.Id">
-        <div class="food-circle">
-            @if (!string.IsNullOrWhiteSpace(item.ImageUrl))
-            {
-                <img src="@item.ImageUrl" alt="@item.Name" />
-            }
-        </div>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Our Menu</h1>
+    <div class="grid-menu">
+    @foreach (var item in Model)
+    {
+        <a class="menu-item card-ui text-decoration-none"
+           asp-controller="Menu"
+           asp-action="Details"
+           asp-route-id="@item.Id">
+            <div class="menu-thumb">
+                @if (!string.IsNullOrWhiteSpace(item.ImageUrl))
+                {
+                    <img src="@item.ImageUrl" alt="@item.Name" />
+                }
+                else
+                {
+                    <div class="image-placeholder" style="height: 200px;">
+                        <span>No Image</span>
+                    </div>
+                }
+            </div>
 
-        <div class="menu-title">@item.Name</div>
-        <div class="menu-desc">@item.Description</div>
-    </a>
-}
+            <div class="p-3">
+                <div class="menu-title">@item.Name</div>
+                <div class="menu-desc">@item.Description</div>
+            </div>
+        </a>
+    }
+    </div>
 </div>

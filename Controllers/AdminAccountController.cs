@@ -29,7 +29,7 @@ namespace Resturant_Menu.Controllers
             HttpContext.Session.SetInt32("AdminId", admin.Id);
             HttpContext.Session.SetString("AdminUsername", admin.Username);
 
-            return RedirectToAction("Index", "AdminBookings");
+            return RedirectToAction("Index", "AdminDashboard");
 
         }
 

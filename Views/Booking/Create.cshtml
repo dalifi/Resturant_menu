@@ -3,32 +3,38 @@
     int? menuItemId = ViewBag.MenuItemId as int?;
 }
 
-<div class="details-panel" style="grid-template-columns:1fr;">
-    <div>
-        <h4>Booking</h4>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card card-ui">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Make a Booking</h4>
 
-        @if (ViewBag.Error != null)
-        {
-            <div class="text-danger mb-2">@ViewBag.Error</div>
-        }
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Error</div>
+                    }
 
-        <form method="post">
-            @Html.AntiForgeryToken()
+                    <form method="post">
+                        @Html.AntiForgeryToken()
 
-            <input type="hidden" name="menuItemId" value="@menuItemId" />
+                        <input type="hidden" name="menuItemId" value="@menuItemId" />
 
-            <div class="mb-2">
-                <label class="form-label">Customer Name</label>
-                <input name="customerName" class="form-control" required />
+                        <div class="mb-3">
+                            <label class="form-label">Customer Name</label>
+                            <input name="customerName" class="form-control input-ui" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Table Number</label>
+                            <input name="tableNumber" type="number" class="form-control input-ui" min="1" max="500" required />
+                        </div>
+
+                        <button class="btn btn-primary">Submit Booking</button>
+                        <a class="btn btn-outline-light ms-2" asp-controller="Menu" asp-action="Index">Back to Menu</a>
+                    </form>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label class="form-label">Table Number</label>
-                <input name="tableNumber" type="number" class="form-control" min="1" max="500" required />
-            </div>
-
-            <button class="btn btn-book">Submit</button>
-            <a class="btn btn-outline-dark ms-2" asp-controller="Menu" asp-action="Index">Back</a>
-        </form>
+        </div>
     </div>
 </div>

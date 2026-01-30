@@ -1,0 +1,47 @@
+@model List<MenuItem>
+@{
+    ViewData["Title"] = "Manage Menu Items";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Manage Menu Items</h1>
+
+    <a href="@Url.Action("CreateMenuItem", "AdminDashboard")" class="btn btn-primary mb-3">Add New Menu Item</a>
+
+    <div class="card card-ui">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Available</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Price $</td>
+                                <td>@item.Category?.Name</td>
+                                <td>@(item.IsAvailable ? "Yes" : "No")</td>
+                                <td>
+                                    <a href="@Url.Action("EditMenuItem", "AdminDashboard", new { id = item.Id })" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="@Url.Action("DeleteMenuItem", "AdminDashboard", new { id = item.Id })" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Index", "AdminDashboard")" class="btn btn-secondary mt-3">Back to Dashboard</a>
+</div>

@@ -1,0 +1,59 @@
+@model MenuItem
+@{
+    ViewData["Title"] = "Edit Menu Item";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Edit Menu Item</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card card-ui">
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input name="Name" class="form-control input-ui" value="@Model.Name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea name="Description" class="form-control input-ui" rows="3">@Model.Description</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input name="Price" type="number" step="0.01" class="form-control input-ui" value="@Model.Price" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image URL</label>
+                            <input name="ImageUrl" class="form-control input-ui" value="@Model.ImageUrl" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select name="CategoryId" class="form-control input-ui" required>
+                                <option value="">Select Category</option>
+                                @{
+                                    var categories = ViewBag.Categories as List<Category>;
+                                    if (categories != null)
+                                    {
+                                        @foreach (var cat in categories)
+                                        {
+                                            <option value="@cat.Id" selected="@(Model.CategoryId == cat.Id ? "selected" : null)">@cat.Name</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" name="IsAvailable" class="form-check-input" value="true" checked="@Model.IsAvailable" />
+                            <label class="form-check-label">Is Available</label>
+                        </div>
+                        <button class="btn btn-primary w-100">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="@Url.Action("MenuItems", "AdminDashboard")" class="btn btn-secondary mt-3">Back to Menu Items</a>
+</div>
