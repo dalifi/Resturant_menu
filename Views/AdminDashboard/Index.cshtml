@@ -11,7 +11,7 @@
                 <h1 class="dashboard-title">Admin Dashboard</h1>
                 <p class="dashboard-subtitle">Golden Leaf Restaurant Management</p>
             </div>
-            <a href="@Url.Action("Logout", "AdminAccount")" class="btn-logout">
+            <a href="@Url.Action("Logout", "AdminAccount")" class="btn-logout" onclick="return confirm('Are you sure you want to logout?');">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M13 3H16C16.5304 3 17.0391 3.21071 17.4142 3.58579C17.7893 3.96086 18 4.46957 18 5V15C18 15.5304 17.7893 16.0391 17.4142 16.4142C17.0391 16.7893 16.5304 17 16 17H13M7 13L3 10M3 10L7 7M3 10H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
